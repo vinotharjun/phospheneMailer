@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css"
+    integrity="sha256-gVCm5mRCmW9kVgsSjQ7/5TLtXqvfCoxhdsjE6O1QLm8=" crossorigin="anonymous" />
+  <title>Phosphene Linguistics</title>
+  <style>
+    /* ---- reset ---- */
+    body {
+      margin: 0;
+      font: normal 100% Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    canvas {
+      display: block;
+      vertical-align: bottom;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      background-color: black;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 100% 100%;
+    }
+    .form-div {
+      position: absolute;
+      width: 100%;
+    }
+    .flashcard {
+      background-color: rgba(111, 201, 131, 0.5) !important;
+      color: white;
+      margin-left: 100px;
+      /* Added */
+      margin-right: 100px;
+      float: none;
+      /* Added */
+      margin-bottom: 10px;
+      /* Added */
+    }
+    .content {
+      background-color: rgba(39, 36, 36, 0.5) !important;
+      color: whitesmoke;
+    }
+    .white-card {
+      background-color: rgba(39, 36, 36, 0.5) !important;
+      color: whitesmoke;
+    }
+    @media only screen and (min-width: 768px) {
+      #particles-js{
+        height: 300%;
+      }
+    }
+  </style>
+</head>
+
+<body id="particles-js">
+  {{!-- flash messge --}}
+
+
+  {{!-- flash messge --}}
+
+  <div class="form-div">
+    {{#if msg }}
+    <br>
+    <div class="animated fadeInLeftBig">
+      <div class=" card bg-success  text-black flashcard" style="">
+        <div class="card-body">{{msg}}</div>
+      </div>
+    </div>
+    {{/if}}
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center text-white mb-4">Phosphene AI</h2>
+          <h6 class="text-center text-white mb-4">Department of Computational Linguistics </h6>
+          <div class="animated fadeInLeftBig">
+            <div class=" card bg-success  text-black content" style="">
+              <div class="card-body">
+                <p>
+                  We still remember our first hobby project. We collected some transcripts of certain public speakers
+                  to analyze what made them so special. Working with text is such a beauty. The complexity behind it and the potential 
+                  that we see in the amount of Natural Language data are huge drivers for us to keep working on more. We have come a 
+                  long way from that hobby project, but this one that we will be working on for the next few months is even more special. 
+                  At Phosphene AI we believe that talent is everywhere but opportunity is not. Many of us here have had a huge headstart 
+                  that has helped us grab opportunities easily, while many don’t have that deserving chance. That’s why we decided to 
+                  contribute to fix that gap by leveraging the power of AI and data. But we need your help. For our next project, we want a 
+                  huge repository of Resumes that we can use to build state of the art parsing engines and clustering engines. We don’t 
+                  want to scrape information from the Internet as we believe in your right privacy. So we decided to build a portal where 
+                  people can upload their resumes and help us build some awesome software. Your tiny contribution can not only
+                  us, but also many students around the world who aspire to do more. Use the form below to submit your resume. Thank You!!
+                </p>
+              </div>
+            </div>
+          </div>
+          <br>
+          {{!--  --}}
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="animated fadeInRightBig">
+                <div class=" card bg-success  text-black white-card" style="">
+                  <div class="card-body">
+                    <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST"
+                      action="/send" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <br>
+                        <center>
+                          <div class="btn-group b">
+                            <button type="button" class="btn btn-outline-danger" onclick="removeText(event)">-</button>
+                            &nbsp;&nbsp;&nbsp; <h4 class=" p-90">Upload your resume</h4>&nbsp;&nbsp;&nbsp;
+                            <button type="button" class="btn btn-outline-success" onclick="appendText(event)">+</button>
+                          </div>
+                        </center>
+                      </div>
+                      <div id="fileinput">
+                        <div class="form-group  ">
+                          <input type="file" class="form-control form-control-lg rounded-0 white-card" name="avatar"
+                            id="uname1" required="">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Send</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/row-->
+    </div>
+    <!--/col-->
+  </div>
+  <!--/row-->
+  </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+  integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+  integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib -->
+<script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+
+
+
+<script>
+  // add file 
+  function appendText(event) {
+    console.log(event)
+    event.preventDefault()
+    var txt1 = `  <div class="form-group  " >
+                                   <input type="file" class="form-control form-control-lg rounded-0 white-card" name="avatar" id="uname1" required="">
+                                </div>`
+
+    $("#fileinput ").append(txt1)
+  }
+  //remove file
+  function removeText(event) {
+
+    event.preventDefault()
+    $("#fileinput").children().last().remove();
+  };
+
+  //particle js content
+  particlesJS("particles-js", {
+    "particles": {
+      "number": {
+        "value": 300,
+        "density": {
+          "enable": true,
+          "value_area": 700
+        }
+      },
+      "color": {
+        "value": ["#aa73ff", "#f8c210", "#83d238", "#33b1f8"]
+      },
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        },
+        "polygon": {
+          "nb_sides": 15
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+          "enable": false,
+          "speed": 1.5,
+          "opacity_min": 0.15,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 5.5,
+        "random": false,
+        "anim": {
+          "enable": true,
+          "speed": 2,
+          "size_min": 0.15,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 110,
+        "color": "#33b1f8",
+        "opacity": 0.25,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 1.6,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": false,
+          "mode": "repulse"
+        },
+        "onclick": {
+          "enable": false,
+          "mode": "push"
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 400,
+          "line_linked": {
+            "opacity": 1
+          }
+        },
+        "bubble": {
+          "distance": 400,
+          "size": 40,
+          "duration": 2,
+          "opacity": 8,
+          "speed": 3
+        },
+        "repulse": {
+          "distance": 200,
+          "duration": 0.4
+        },
+        "push": {
+          "particles_nb": 4
+        },
+        "remove": {
+          "particles_nb": 2
+        }
+      }
+    },
+    "retina_detect": true
+  });
+
+</script>
+
+
+</html>
