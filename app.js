@@ -67,7 +67,7 @@ app.post("/send",(req,res)=>{
           to:"linguisticsresearch@phoenicorn.com",
           //to: 'linguisticsresearch@phoenicorn.com',
           subject: 'phosphene mails',
-          text: req.body.name,
+          text: "uploaded resume",
         
           attachments:array
         };
