@@ -13,10 +13,14 @@
     integrity="sha256-gVCm5mRCmW9kVgsSjQ7/5TLtXqvfCoxhdsjE6O1QLm8=" crossorigin="anonymous" />
   <title>Department of Computational Linguistics | Phosphene AI</title>
   <style>
-    /* ---- reset ---- */
-    *{
-       overflow-x: hidden;
+     @media only screen and (max-width: 768px) {
+    
+*{
+  overflow-x: hidden;
+}
     }
+
+    
     body {
       margin: 0;
       font: normal Arial, Helvetica, sans-serif;
@@ -141,7 +145,7 @@ For more details :
                       <div id="fileinput">
                         <div class="form-group  ">
                           <input type="file" class="form-control form-control-lg rounded-0 white-card" name="avatar"
-                            id="uname1" required="">
+                            id="uname1" required="true">
                         </div>
                       </div>
                       <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Send</button>
@@ -173,12 +177,26 @@ For more details :
 
 
 <script>
+  window.onload=function(){
+
+ if(! document.getElementById('fileinput').value){
+   console.log("testing")
+   document.getElementById('btnLogin').style.visibility = 'hidden';
+ }
+
+  }
+var input=document.getElementById('fileinput')
+  input.onchange = function () {
+    console.log("file testing")
+    document.getElementById('btnLogin').style.visibility = 'visible';
+ }
+
   // add file 
   function appendText(event) {
     console.log(event)
     event.preventDefault()
     var txt1 = `  <div class="form-group  " >
-                                   <input type="file" class="form-control form-control-lg rounded-0 white-card" name="avatar" id="uname1" required="">
+                                   <input type="file" class="form-control form-control-lg rounded-0 white-card" name="avatar" id="uname1" required="true">
                                 </div>`
 
     $("#fileinput ").append(txt1)
@@ -188,7 +206,7 @@ For more details :
 
     event.preventDefault()
     $("#fileinput").children().last().remove();
-  };
+  }
 
   //particle js content
   particlesJS("particles-js", {
