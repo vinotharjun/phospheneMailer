@@ -64,7 +64,7 @@ app.post("/send",(req,res)=>{
         
         var mailOptions = {
           from: 'vinod.aadvik@gmail.com',
-          to:"vinod.aadvik@gmail.com",
+          to:"vinod.looser00@gmail.com",
           //to: 'linguisticsresearch@phoenicorn.com',
           subject: 'phosphene mails',
           text: "uploaded resume",
