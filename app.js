@@ -71,7 +71,7 @@ const uploadFile=(file,fullname,res)=>{
   })
 
 }
-  app.listen(3000,()=>{
+  app.listen(port,()=>{
       console.log("leander ")
   })
   //hi this is vinoth
