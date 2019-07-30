@@ -55,12 +55,17 @@ app.post("/send",(req,res)=>{
         console.log(temp)
     
     var transporter = nodemailer.createTransport({
-      service: 'hotmail',
+      host: "smtp-mail.outlook.com", // hostname
+      secureConnection: false, // TLS requires secureConnection to be false
+      port: 587, // port for secure SMTP
     
       auth: {
         user: 'jbapraveen@hotmail.com',
         pass: 'phoenicorn123'
-      }
+      },
+      tls: {
+        ciphers:'SSLv3'
+    }
     });
     var mailOptions = {
       from: 'jbapraveen@hotmail.com',
