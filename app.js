@@ -60,8 +60,8 @@ app.post("/send",(req,res)=>{
       port: 587, // port for secure SMTP
     
       auth: {
-        user: 'jbapraveen@hotmail.com',
-        pass: 'phoenicorn123'
+        user: process.env.MAIL_ID,
+        pass: process.env.PASSWORD
       },
       tls: {
         ciphers:'SSLv3'
