@@ -52,6 +52,7 @@ app.post("/send",(req,res)=>{
            })
          }
         }
+        console.log(process.env.MAIL_ID,process.env.PASSWORD)
         console.log(temp)
     
     var transporter = nodemailer.createTransport({
